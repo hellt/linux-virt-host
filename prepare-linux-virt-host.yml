@@ -1,0 +1,38 @@
+---
+- name: Prepare linux virt host
+  gather_facts: no
+  hosts: localhost
+  tasks:
+    - name: Include packages/services to install/set
+      include_vars: main.yml
+
+    - name: Install epel repository
+      yum: name=epel-release state=present
+
+    - name: Install IUS repository
+      yum: name=https://centos7.iuscommunity.org/ius-release.rpm
+
+    - name: Add Docker CE repository
+      shell:  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    - name: install packages
+      yum: name={{ item }} state=present
+      with_items: '{{ packages_to_install }}'
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Update pip
+      pip:
+        name: pip
+        state: latest
+
+    - name: Install virtualenv package
+      pip:
+        name: virtualenv
+        state: present
+
+- import_playbook: nested-virt.yml

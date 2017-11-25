@@ -1,0 +1,49 @@
+services_to_stop:
+  - NetworkManager
+
+services_to_start:
+  - libvirtd
+
+packages_to_install:
+  - vim
+  - htop
+  - iftop
+  - iotop
+  - mc
+  - nmap
+  - bash-completion
+  - bash-completion-extras
+  - tcpdump
+  - wireshark
+  - "@Virtualization"
+  - "@Virtualization Platform"
+  - "@Virtualization Tools"
+  - libguestfs-tools
+  - bridge-utils
+  - virt-install
+  - virt-clone
+  - virt-top
+  - libvirt
+  - libguestfs-tools
+  - bridge-utils
+  - libvirt-python
+  - virt-install
+  - virt-clone
+  - python-lxml
+  - vim
+  - htop
+  - iotop
+  - iftop
+  - nmap
+  - bash-completion
+  - bash-completion-extras
+  - mc
+  - tcpdump
+  - wireshark
+  - virt-top
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+  - docker-ce
+  - git
+  - python2-pip
