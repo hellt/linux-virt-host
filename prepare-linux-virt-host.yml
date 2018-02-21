@@ -12,16 +12,25 @@
     - name: Install IUS repository
       yum: name=https://centos7.iuscommunity.org/ius-release.rpm
 
-    - name: Add Docker CE repository
-      shell:  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    - block:
+      - name: Install yum-utils
+        yum: name=yum-utils state=present
+      - name: Add Docker CE repo
+        shell:  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-    - name: install packages
+    - name: Install packages
       yum: name={{ item }} state=present
       with_items: '{{ packages_to_install }}'
 
     - name: Start Docker service
       service:
         name: docker
+        state: started
+        enabled: yes
+
+    - name: Start Libvirtd service
+      service:
+        name: libvirtd
         state: started
         enabled: yes
 
@@ -34,5 +43,10 @@
       pip:
         name: virtualenv
         state: present
+
+    - name: Delete default KVM network
+      virt_net:
+        state: absent
+        name: default
 
 - import_playbook: nested-virt.yml
