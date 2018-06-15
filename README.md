@@ -1,2 +1,4 @@
 # About
-Ansible playbook to prepare virtualization host
+Ansible playbook to prepare KVM-based hypervisor.
+
+**Supported OS:** Centos/RHEL 7+
