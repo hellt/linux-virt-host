@@ -47,3 +47,4 @@ packages_to_install:
   - docker-ce
   - git
   - python2-pip
+  - unzip
