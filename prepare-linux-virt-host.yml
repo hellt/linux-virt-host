@@ -1,7 +1,8 @@
 ---
 - name: Prepare linux virt host
   gather_facts: no
-  hosts: localhost
+  hosts: all
+  remote_user: root
   tasks:
     - name: Include packages/services to install/set
       include_vars: main.yml
