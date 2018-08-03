@@ -55,3 +55,5 @@
         name: default
 
 - import_playbook: nested-virt.yml
+  tags:
+    - nested_virt
