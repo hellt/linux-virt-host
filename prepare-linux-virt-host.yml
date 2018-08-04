@@ -3,6 +3,7 @@
   gather_facts: no
   hosts: all
   remote_user: root
+  become: true
   tasks:
     - name: Include packages/services to install/set
       include_vars: main.yml
