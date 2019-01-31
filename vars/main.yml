@@ -24,7 +24,6 @@ packages_to_install:
   - virt-clone
   - virt-top
   - libvirt
-  - bridge-utils
   - libvirt-python
   - python-lxml
   - yum-utils
